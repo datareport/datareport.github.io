@@ -210,31 +210,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #intro .product-screens img {
-  box-shadow: 0px -2px 19px 4px rgba(0, 0, 0, 0.29);
 }
 
 #intro .product-screens .product-screen-1 {
   position: absolute;
-  z-index: 30;
-  left: calc(50% + 54px);
-  bottom: 0;
-  top: 30px;
+  z-index: 50;
+  left: calc(50% + 114px);
+  bottom: 10;
+  top: -30px;
 }
 
 #intro .product-screens .product-screen-2 {
   position: absolute;
   z-index: 20;
-  left: calc(50% - 154px);
+  left: calc(50% - 134px);
   bottom: 0;
   top: 90px;
 }
 
 #intro .product-screens .product-screen-3 {
   position: absolute;
-  z-index: 10;
-  left: calc(50% - 374px);
+  z-index: 0;
+  left: calc(20% - 104px);
   bottom: 0;
-  top: 150px;
+  top: -5px;
 }
 
 @media (max-width: 767px) {
@@ -516,7 +515,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #about .about-img {
-  height: 510px;
+  height: 710px;
   overflow: hidden;
 }
 
