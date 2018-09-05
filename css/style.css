@@ -1224,3 +1224,27 @@ body.mobile-nav-active #mobile-nav-toggle {
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
+
+/*--------------------------------------------------------------
+# DataS
+--------------------------------------------------------------*/
+#datas .responsive-inline-frame {
+  max-width: 800px; /* 800x450 (16x9 aspect ratio) */
+  margin: auto;
+}
+ 
+#datas .responsive-inline-frame-inner {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+  height: 0;
+}
+ 
+#datas .responsive-inline-frame-inner iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
