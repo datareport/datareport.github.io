@@ -93,6 +93,7 @@ jQuery(document).ready(function($) {
     $.ajax({
       type: "POST",
       url: "contactform/contactform.php",
+      crossDomain: true,
       data: str,
       success: function(msg) {
         // alert(msg);
