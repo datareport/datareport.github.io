@@ -1,80 +1,66 @@
-<html>
-	<head>
-		<title>My Test Responsive Dashboard</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script src="http://public.tableau.com/javascripts/api/tableau-2.0.0.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-		<script>
-			/**
-			 * Instantiate our vizualization.
-			 */
-			$(function() {
-				var url  = 'https://public.tableau.com/views/ESTATE_GYE_0/FuerzaLabor?:embed=y&:display_count=yes&:toolbar=no';
-				var size = findDashboardSize();
-				var vizOptions = {
-					showTabs           : true,
-					hideToolbar        : true,
-					width              : size.width + "px",
-					height             : size.height + "px",
-					onFirstInteractive : function (e) {
-						$('.viz iframe').attr("scrolling","no");
-						$('.viz iframe').css('overflow', 'hidden');
-					}
-				};
-				
-				new tableauSoftware.Viz(document.getElementById('viz'), url, vizOptions)
-			});
-			
-			/**
-			 * Finds the correct size of the dashboard in this screen.
-			 */
-			function findDashboardSize() {
-				var minHeight = 630;
-				var maxHeight = 885;
-				var minWidth  = 1000;
-				
-				// The minus 100px leaves us room for the header/footer. Adjust as needed.
-				var height = $('body').height() - 100;
-				
-				if (height < minHeight) {
-					height = minHeight;
-				}
-				if (height > maxHeight) {
-					height = maxHeight;
-				}
-				
-				var width = Math.round(height/(minHeight/minWidth));
-				return {
-					'width'  : width,
-					'height' : height
-				}
-			}
-			
-			/**
-			 * Resizes our viz.
-			 */
-			function resize() {
-				var size = findDashboardSize();
-				$('#viz').width(size.width);
-				$('#viz').height(size.height);
-				$('#viz iframe').attr("scrolling","no");
-				$('#viz iframe').css('overflow', 'hidden');
-				$('#viz iframe').width(size.width);
-				$('#viz iframe').height(size.height + 20);
-			}
-			
-			/**
-			 * Hook into the window resize event to resize when the user resizes the screen.
-			 */
-			$(window).resize(resize);
-		</script>
-	</head>
-	<body>
-		<div class="navbar navbar-default">
-			<a class="navbar-brand" href="http://www.interworks.com">
-				<img src="https://www.interworks.com/logo/images/logo.png" />
-			</a>
-		</div>
-		<div id="viz"></div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DataReportApp</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon2.png" rel="icon">
+  <link href="img/apple-touch-icon2.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+  
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Avilon
+    Theme URL: https://bootstrapmade.com/avilon-bootstrap-landing-page-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+  <!--==========================
+    Datas
+  ============================-->
+
+        <section id="datas">
+        <div class="responsive-inline-frame">
+                <div class="responsive-inline-frame-inner">
+                        <iframe       
+                        margin=0;
+                        padding=0; 
+                        height=100%;  
+                        height= 1600;        
+                        width= 1450;
+                        style="position:fixed;"
+                        src="https://public.tableau.com/views/ESTATE_GYE_0/FuerzaLabor?" 
+                        >
+
+                        
+                    </iframe>
+
+                    
+                </div>
+              </div>  
+  
+<head>
+  
+</body>
 </html>
