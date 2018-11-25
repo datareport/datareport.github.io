@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+               
+<html data-assembly-focus-control="not-visible"><head><meta 
+http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Mapa Petrolero Mundial </title>
+    <link rel="icon" type="image/png" href="./OilMap_files/vzla.png" sizes="16x16">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script src="./OilMap_files/mapbox-gl.js"></script>
+    <link href="./OilMap_files/mapbox-gl.css" rel="stylesheet">
+    <link href="./OilMap_files/assembly.min.css" rel="stylesheet">
+    <script async="" defer="" src="./OilMap_files/assembly.js"></script>
+    
+
+
+    <style>
+      body {
+          margin:0;
+          padding:0;
+      }
+
+      header {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-transform: uppercase;
+        z-index:1;
+        
+      }
+
+      .logo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+      }
+
+      #panel {
+        width: 400px;
+        position: absolute;
+        right: 24px;
+        top: 120px;
+        z-index:1;
+      }
+
+      #legend {
+        position: absolute;
+        left: 24px;
+        bottom: 120px;
+        z-index: 1;
+      }
+
+      #map { position:absolute; top:0; bottom:0; width:100%; z-index:-1;}
+
+      dd {
+        margin-left: 0;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      .sidebar {
+        width:120px;
+        }
+      .sidebar > div:first-child button {
+        border-radius:3px 3px 0 0;
+        }
+      .sidebar > div:last-child button {
+        border-radius:0 0 3px 3px;
+        }
+
+       /* Dark attribution */
+      .mapboxgl-ctrl.mapboxgl-ctrl-attrib { background-color:rgba(0,0,0,0.5); }
+      .mapboxgl-ctrl.mapboxgl-ctrl-attrib a { color:#fff; }
+      .mapboxgl-popup-content {
+        background-color: rgba(0,0,0,.75);
+        font-size: 14px;
+        color: #ccc;
+        min-width: 250px;
+        max-width: 400px;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      dl {
+        margin-bottom: 0;
+      }
+
+      .hide{
+        display: none;
+      }
+
+      /* modal styling */
+      .modal {
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0,0.4);
+      }
+
+      .modal-content {
+          text-align: center;
+          background-color: #fefefe;
+          margin: 10% auto;
+          padding: 40px;
+          border: 1px solid #888;
+          width: 40%;
+      }
+
+      .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+    }
+
+      #menu {
+        position: absolute;
+        background: rgba(0,0,0,0.5);
+        padding: 10px;
+        margin-top: 120px;
+      }
+
+      @media (max-width: 600px) {
+        h3 {
+          font-size: 16px!important;
+          padding: 12px!important;
+        }
+
+        #panel {
+          top: auto;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+        }
+
+        .modal-content{
+          width:100%;
+        }
+      }
+      .about-header {
+        cursor:pointer;
+      }
+  
+    </style>
+</head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111035186-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111035186-2');
+</script>
+
+<body class="prose">
+    <header class="bg-darken75 color-gray-light h-auto-mm h60">
+        <div class="flex-parent flex-parent--space-between-main w-full">
+          <div class="flex-child ml240 mt24 mb12"><h3>Mapa Petrolero Mundial - World Oil Map</h3></div>
+          <div class="about-header flex-child mr24 mt30 mb12 txt-bold"><svg class="icon inline mr6"><use xlink:href="#icon-question"></use></svg>About</div>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//datareport.github.io/oilmap.html&title=Mapa%20Petrolero%20Mundial&summary=&source=">Share on LinkedIn</a>
+        </div>
+    </header>
+
+  
+<!-- toggle style-->
+  
+  <<meta charset='utf-8' />
+  <title>Display a map</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+  <style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+  </head>
+  <body>
+   
+  <div id='map'></div>
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoicm9xdWVsZWFsIiwiYSI6ImNqaHVzZTA4ODBkZjczdmt0cTNrbGo1ZWEifQ.m7xOPPWAFsY-A4cAr5nDAw';
+  const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/roqueleal/cjom1qp3z19rm2rkermbjmf7j',
+  center: [-67.852343, 10.245347],
+  zoom: 4.17
+  });
+  </script>
+
+  <!-- modal-->
+  <div id="aboutModal" class="modal" style="display: none;">
+
+  <!-- modal content -->
+    <div class="modal-content">
+      <span class="close">×</span>
+      <p></p><h3>Acerca del Mapa Petrolero Mundial</h3><br>
+        Este mapa contiene datos a escala gran visión compilados por la Universidad de Harvard en su proyecto "The Harvard WorldMap 2008". Para mayor información puede consultar directamente en <a href="http://worldmap.harvard.edu/maps/6718">The Harvard WorldMap Project
+        </a> .<br><br>
+        Soy <a href="https://www.linkedin.com/in/lealrlx/">Roque Leal
+        </a> te invito a colaborar en actualizar y compartir esta información, se parte de esta iniciativa para contar con información más actualizada comentando, compartiendo y escribiéndome a <a href="mailto:roqueleal@gmail.com"> roqueleal@gmail.com
+        </a>.<br><br>
+        Especial agradecimiento a <a href="https://www.mapbox.com/">Mapbox</a> por compartir la inspiración y su tecnología en la visualización profunda y dinámica de nuestros datos.<p></p>
+  </div>
+</div>
+<!-- legend -->
+<div id="legend" class="bg-black w240 color-gray-light round shadow-darken10 px12 py18 txt-l">
+  <strong class="block mb6">Leyenda</strong>
+  <strong class='block mb6'>Tipo de Yacimiento</strong>
+  <div class='flex-parent flex-parent--center-main flex-parent--center-cross align-center'>
+   
+    
+    <div class='flex-child flex-child--grow wmin24'>
+      <span class='inline-block w24 h24 round-full bg-red'></span>
+    </div>
+    <div class='flex-child flex-child--grow wmin24'>
+      <span class='inline-block w24 h24 round-full bg-green'></span>
+    </div>
+    <div class='flex-child flex-child--grow wmin24'>
+      <span class='inline-block w24 h24 round-full bg-yellow'></span>
+    </div>
+  </div>
+  <div class='grid txt-xs align-center'>
+    
+    <div class='col wmin24'> Yacimiento de Crudo</div>
+    <div class='col wmin24'>Yacimiento de Gas</div>
+    <div class='col wmin24'>Yacimiento de Crudo y Gas</div>
+  </div>
+  <strong class='block mb6'>Transporte</strong>
+  <div class='flex-parent flex-parent--center-main flex-parent--center-cross align-center'>
+   
+
+    <div class='grid mb6'>
+    </div>
+    <div class='col bg-red h12'>
+    </div>
+  </div>
+  <div class='grid txt-xs align-center'>
+    <div class='col wmin24'> Oleoducto</div>
+      </div>
+
+      <div class='grid mb6'>
+      </div>
+      <div class='col bg-green h12'>
+      </div>
+   
+    <div class='grid txt-xs align-center'>
+      <div class='col wmin24'> Gasoducto</div>
+        </div>
+        
+</div>
+<script src="./OilMap_files/jquery.min.js"></script>
+<script>
+
+  
+    // to grab checkbox value
+
+  mapboxgl.accessToken = 'pk.eyJ1Ijoicm9xdWVsZWFsIiwiYSI6ImNqaHVzZTA4ODBkZjczdmt0cTNrbGo1ZWEifQ.m7xOPPWAFsY-A4cAr5nDAw';
+
+  
+
+
+  $('input.js-checkboxes').prop('checked', true);
+  var nav = new mapboxgl.NavigationControl();
+  map.addControl(nav, 'bottom-right');
+  function mapReset() {
+    if (window.innerWidth < 800) {
+      map.setZoom(4.17);
+    } else {
+        map.setZoom(4.17);
+    }
+  }
+
+  map.on('style.load', function() {
+    mapReset();
+
+    map.addLayer({
+        'id': 'spills',
+        'type': 'circle',
+        'source': {
+            type: 'vector',
+            url: 'mapbox://amnestydecoders.a5mvlphb'
+        },
+        'source-layer': 'latest_amnesty_oilspills_litr-86outd',
+        'paint': {
+            // color radius based on volume barrels
+            'circle-radius': ['/', ['to-number', ['get', 'volume_barrels']], 50],
+            'circle-opacity': 1,
+            'circle-stroke-color': 'rgba(246, 246, 246, 0.71)',
+            'circle-stroke-width': 1,
+            // tilted the step values a bit since there are a few outliers near the max value
+            "circle-color": [
+                      "step", ["number", ["get", "litres"]],
+                      "#000000",
+                      0, "#fb6a4a",
+                      25000, "#ef3b2c",
+                      50000, "#cb181d",
+                      100000, "#a50f15",
+                      125000, "#67000d",
+                      150000, "#54030d",
+                      804000, "#230004"
+                    ]
+            },
+            'filter': ['!=', 'company', '1272']
+    });
+
+    $('.js-checkboxes').on('change', function(e) {
+      changeLayer();
+    });
+
+    range.addEventListener('input', (e) => {
+      changeLayer();
+    });
+
+    // toggle style
+    var layerList = document.getElementById('menu');
+    var inputs = layerList.getElementsByTagName('input');
+
+    function switchLayer(layer) {
+      var layerId = layer.target.id;
+      map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
+    }
+
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].onclick = switchLayer;
+    }
+
+    function changeLayer() {
+      var filters = ['all', ['!=', 'company', '1272']];
+      var categories = {};
+      var yearIndex = parseInt(range.value, 10);
+      var checkboxes = $('.js-checkboxes');
+      var yearsFilter = ['in', 'year'];
+      for (c in checkboxes){
+        var checkbox = checkboxes[c];
+        if (checkbox.checked){
+          var id = checkbox.parentElement.parentElement.id;
+          var d = checkbox.dataset[id];
+
+          if (categories[id]){
+            categories[id].push(d)
+          }else{
+            categories[id] = ['in', id, d]
+          }
+        }
+      }
+
+
+      for (key in categories) {
+        var filter = categories[key];
+        filters.push(filter);
+      }
+
+      if (yearIndex === 0 ) {
+        filters.push(yearsFilter.concat(years.slice(0,1)));
+      } else {
+        filters.push(yearsFilter.concat(years.slice(0, yearIndex + 1)));
+      }
+
+      map.setFilter('spills', filters);
+
+    };
+
+    var continuousPlay = function() {
+      var currentYearIndex = parseInt(range.value, 10);
+
+      if (currentYearIndex >= years.length - 1) {
+        currentYearIndex = 0;
+      } else {
+        currentYearIndex += 1;
+      }
+
+      range.value = currentYearIndex;
+      changeLayer();
+
+      currentlyPlaying = setTimeout(() => {
+        continuousPlay();
+      }, 1000);
+    };
+
+    $('.js-play').on('click', function(e) {
+      continuousPlay();
+      $(this).addClass('hide');
+      $('.js-pause').removeClass('hide');
+
+    });
+
+    $('.js-pause').on('click', function(e) {
+      $(this).addClass('hide');
+      $('.js-play').removeClass('hide');
+      clearTimeout(currentlyPlaying);
+    });
+
+    map.on('mousemove', function(event) {
+      if (map.loaded()) {
+        var features = map.queryRenderedFeatures(event.point, {
+          layers: ['spills']
+        });
+        map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      mapReset();
+    })
+
+    map.on('click', function(event) {
+      var geometry = event.point;
+      var parameters = {
+        layers: ['spills']
+      };
+      var features = map.queryRenderedFeatures(geometry, parameters);
+      var spill = features[0];
+
+      // tooltip should include:
+      // Dates
+      // Volume
+      // Pipeline
+      // Cause Shell/ Eni
+      // Cause Amnesty
+      // Links to images and document
+
+      if (features.length) {
+        var company = spill.properties.company || '—';
+        var date_reported = spill.properties.date_reported || '—';
+        var company_cause = spill.properties.company_cause || '—';
+        var response_time = spill.properties.response_time || '—';
+        var litres = spill.properties.litres || '—';
+        var photo_url = spill.properties.photo_url || '—';
+        var jiv_url = spill.properties.jiv_url || '—';
+
+        var popup = new mapboxgl.Popup()
+          .setLngLat(event.lngLat)
+          .setHTML('<dl>' +
+            '<dt>Company</dt>' +
+            '<dd>' + company + '</dd>' +
+            '<dt>Date Reported</dt>' +
+            '<dd>' + date_reported + '</dd>' +
+            '<dt>Response Time</dt>' +
+            '<dd>' + response_time + ' days</dd>' +
+            '<dt>Cause (declared by company)</dt>' +
+            '<dd>' + company_cause + '</dd>' +
+            '<dt>Volume of Spill (in Litres)</dt>' +
+            '<dd>' + litres + '</dd>' +
+            '<dt>Spill Report</dt>' +
+            '<dd><a target="_blank" href=' + jiv_url + '>Report</a></dd>' +
+            '<dt>Photos</dt>' +
+            '<dd><a target="_blank" href=' + photo_url + '><button class="btn round color-black">View photos</button></a></dd>' +
+          '</dl>')
+          .addTo(map);
+      }
+    });
+  });
+
+  // modal interaction
+  var modal = document.getElementById('aboutModal');
+  modal.style.display = "block";
+
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+      modal.style.display = "none";
+  }
+
+  var aboutHeader = document.getElementsByClassName("about-header")[0];
+  aboutHeader.onclick = function() {
+    document.body.style.cursor = "pointer";
+    modal.style.display = "block";
+  }
+
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";      }
+  }
+
+  </script>
+
