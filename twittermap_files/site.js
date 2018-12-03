@@ -26,8 +26,8 @@ var phones = [{
 ];
 
 
-var map = L.mapbox.map('map', null, { zoomControl: false, maxZoom: 14 })
-    .setView([4.6, -69.8], 5);
+var map = L.mapbox.map('map', null, { zoomControl: false, maxZoom: 82 })
+    .setView([-2.160942, -79.8900], 12);
 
 var comp = getComp();
 var labelsLayer = L.mapbox.tileLayer('tmcw.map-m90iqp6p');
