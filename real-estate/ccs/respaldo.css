@@ -1,0 +1,516 @@
+.mapbox-improve-map {display: none}
+a[href^="https://www.mapbox.com/"] {display: none !important}
+a[href^="https://www.openstreetmap.org/about/" target="_blank"] {display: none !important}
+a[href^="https://www.openstreetmap.org/copyright" target="_blank"] {display: none !important}
+a[href^="https://www.openstreetmap.org/"] {display: none !important}
+.mapboxgl-ctrl-group {border-radius: 5px; border: 1px solid #B0B8BF; box-shadow: none; background: #fff; position: absolute; z-index: 3; top: 245px }
+.mapboxgl-ctrl-group > button + button {border-top: 1px solid #B0B8BF;}
+.mapboxgl-ctrl > button:hover {background-color: #f8f9f9}
+.mapboxgl-ctrl-zoom-out {
+background-image: url(data:image/svg+xml;charset=utf8,<svg%20viewBox%3D%270%200%2020%2020%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27>%0A%20%20<path%20style%3D%27fill%3A%23132736%3B%27%20d%3D%27m%207%2C9%20c%20-0.554%2C0%20-1%2C0.446%20-1%2C1%200%2C0.554%200.446%2C1%201%2C1%20l%206%2C0%20c%200.554%2C0%201%2C-0.446%201%2C-1%200%2C-0.554%20-0.446%2C-1%20-1%2C-1%20z%27%20%2F>%0A<%2Fsvg>%0A) !important;
+}
+.mapboxgl-ctrl-zoom-in {
+background-image: url(data:image/svg+xml;charset=utf8,<svg%20viewBox%3D%270%200%2020%2020%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27>%0A%20%20<path%20style%3D%27fill%3A%23132736%3B%27%20d%3D%27M%2010%206%20C%209.446%206%209%206.4459904%209%207%20L%209%209%20L%207%209%20C%206.446%209%206%209.446%206%2010%20C%206%2010.554%206.446%2011%207%2011%20L%209%2011%20L%209%2013%20C%209%2013.55401%209.446%2014%2010%2014%20C%2010.554%2014%2011%2013.55401%2011%2013%20L%2011%2011%20L%2013%2011%20C%2013.554%2011%2014%2010.554%2014%2010%20C%2014%209.446%2013.554%209%2013%209%20L%2011%209%20L%2011%207%20C%2011%206.4459904%2010.554%206%2010%206%20z%27%20%2F>%0A<%2Fsvg>%0A) !important;
+}
+.mapboxgl-ctrl-icon.mapboxgl-ctrl-compass > .mapboxgl-ctrl-compass-arrow {background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%0A%09%3Cpolygon%20fill%3D%27%23132736%27%20points%3D%276%2C9%2010%2C1%2014%2C9%27%2F%3E%0A%09%3Cpolygon%20fill%3D%27%23697076%27%20points%3D%276%2C11%2010%2C19%2014%2C11%20%27%2F%3E%0A%3C%2Fsvg%3E")}
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib {font-size: 10px; position: relative; right: 0px; bottom: 0px; color: #406079; cursor: default; padding-right: 10px; font-weight: 500; background: #f8f9f9; padding-left: 10px; text-align: left}
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib a {color: #406079; text-decoration: none; cursor: default; font-size: 10px; font-weight: 500}  
+.mapboxgl-ctrl-geocoder {position: absolute; background: #fff; top: -42px; left: 10px; height: 24px; width: 200px; border: 1px solid #B0B8BF; border-radius: 5px; overflow: visible; box-shadow: none; font-family: 'Roboto', sans-serif} 
+.mapboxgl-ctrl-geocoder input::placeholder {font-weight: 700; height: 20px; font-size: 12px; width: 200px; color: #132736; top: 10px; padding-left: 29px; margin-left: 10px; }
+.mapboxgl-ctrl-geocoder input[type='text'] {font-size: 12px; font-weight: 700; width: 210px; overflow: hidden; color: #324d63; padding-left: 29px; margin-top: -7px; line-height: 14px; } 
+.mapboxgl-ctrl-geocoder--icon-loading {display: none !important}
+.mapboxgl-ctrl-geocoder--icon-close {display: none !important}
+.mapboxgl-ctrl-geocoder--icon-search {display: none !important}
+.mapboxgl-ctrl-geocoder .suggestions {background: #fff; border-radius: 0 0 7px 7px; color: #132736; position: absolute; width: 240px; top: 18px; z-index: 5; border-left: 1px solid #B0B8BF; border-right: 1px solid #B0B8BF; border-bottom: 1px solid #B0B8BF; overflow: hidden; font-size: 12px; padding-top: 6px; box-shadow: none; left: -1px}
+.mapboxgl-ctrl-geocoder .suggestions > li > a {cursor: default; display: block; padding: 5px 20px; color: #132736; background: #fff; width: 240px; border-top: 1px solid #B0B8BF; border-radius: 0 0 7px 7px} 
+.mapboxgl-ctrl-geocoder .suggestions > li > a:hover {color: #255dc4; background: #fff; cursor: pointer; text-decoration: none}
+.mapboxgl-ctrl-geocoder .suggestions > .active > a {background: #fff; color: #132736}
+.mapboxgl-ctrl-geocoder--suggestion-title {font-weight: 900; line-height: 15px}  
+.mapboxgl-ctrl-geocoder--suggestion-address {font-size: 12px; font-weight: 500; line-height: 15px} 
+.mapbox-gl-geocoder--error {color: #255dc4; font-size: 10px; font-weight: 500; text-align: left; width: 240px; top: 18px; padding-top: 5px; border-radius: 0 0 7px 7px; padding: 5px 20px; height: 30px; border-top: 1px solid #B0B8BF} 
+#Marker {position: absolute; top: -43px; left: 20px; z-index: 4; cursor: default}  
+#Marker2 {position: absolute; top: -42px; height: 20px; left: 40px; z-index: 2; font-weight: 700; font-size: 12px; width: 200px; color: #132736; cursor: text; } 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {#Marker2  {font-size: 11px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {#Marker2  {font-size: 12px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {.mapboxgl-ctrl-geocoder input[type='text'] {font-size: 11px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {.mapboxgl-ctrl-geocoder input[type='text'] {font-size: 12px;}}
+#closeLOC {position: absolute; cursor: pointer; top: -40px; left: 220px; height: 20px; width: 0px; text-align: center; line-height: 20px; z-index: 4;}
+body {-ms-overflow-style: none; overflow: -moz-scrollbars-none; margin: 0; padding: 0; height: 710px; background: #f8f9f9; width: 100%; scrollbar-width: none; font-family: 'Roboto', sans-serif; -webkit-touch-callout: none; -webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none; overflow-x: hidden; transition: 	opacity 0.3s; transition-timing-function: ease-out;} 
+body::-webkit-scrollbar {width: 0 !important; display: none;} 
+body::-moz-scrollbar {width: 0px; display: none}
+body::-ms-scrollbar {width: 0px; display: none}
+body::scrollbar {width: 0px; display: none}
+.overlayMAP {position: absolute; background: #f8f9f9; width: 540px; height: 655px; top: 55px; left: 0px}    
+#map {position: absolute; width: 100%; height: 655px; top: 0px; left: 10px; border-radius: 0px}  
+#support {position: absolute; font-size: 12px; font-weight: 500; text-align: left; color: #697076; line-height: 24px; z-index: 3; width: 350px; height: 120px; top: 267px; left: 95px; display: none; } 
+boldred {font-weight: 900; font-size: 14px; color: #cd4056; overflow: visible; }
+@-ms-viewport{width: device-width;}
+@-moz-document url-prefix() {html{scrollbar-width: none;}}
+#Restriction {position: absolute; background: #f8f9f9; font-size: 12px; font-weight: 400; text-align: left; color: #132736; line-height: 16px; z-index: 3; width: 540px; top: 0px; left: 10px; border-radius: 0px; padding: 14px; border-bottom: 0px solid #B0B8BF; border-top: 1px solid #cd4056; transition: opacity 0.5s; transition-timing-function: ease-out } 
+.mapboxgl-popup-tip {border: 0px solid  #fff; height: 40px; width: 2px; background: #132736;}
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {-webkit-align-self: center; align-self: center; border: 0px solid  #fff; border-left-color: #132736; width: 40px; height: 2px; background: #132736;}
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {-webkit-align-self: center; align-self: center; border: 0px solid  #fff; border-left-color: #132736; width: 40px; height: 2px; background: #132736;}
+.mapboxgl-popup-close-button {display: none;}
+.mapboxgl-popup-content {background: #fff; border-radius: 50px; font-weight: 900; font-size: 10px; color: #132736; text-align: center; padding-top: 0px; padding-bottom: 1px; padding-left: 14px; padding-right: 14px; border: 1px solid #132736;}
+.mapboxgl-popup-anchor-left .mapboxgl-popup-content {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.mapboxgl-popup-anchor-right .mapboxgl-popup-content {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.mapboxgl-popup-content {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.overlayFILTERS {position: absolute; width: 980px; height: 40px; left: 0px; top: 5px;}   
+.range {position: absolute; bottom: 2px; left: 475px; width: 400px; padding-left: 0px; padding-right: 0px; margin-top: 0px; cursor: default}
+.range input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none}
+#rangeinput input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none}
+.range label {position: absolute; color: #664a08; border-radius: 50px; font-size: 12px; left: 140px; display: inline block; text-align: left; width: 150px; font-weight: 900; padding-right: 10px}  
+#rangeinput {position: relative; left: 0px; width: 120px; color: #132736; display: inline-block; cursor: ew-resize} 
+#toggle {position: absolute; width: 660px; bottom: 8px; left: 20px; padding-top: 0px; padding-left: 0px;}
+#toggle input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none}
+#toggle input:checked+label, #toggle .active {color: #664a08; font-weight: 900}
+#toggle>* { display:none; cursor: pointer; border-radius: 50px; padding-right: 13px; padding-top: 3px; padding-bottom: 3px; text-align: left; font-size: 12px; font-weight: 900; color: #132736}
+#Clearall {position: absolute; cursor: pointer; color: #406079; font-weight: 700; font-size: 12px; top: 8px; right: 170px; text-align: center; line-height: 22px; height: 24px; width: 100px; border-radius: 5px; z-index: 3; border: 1px solid #406079; vertical-align: middle; background: #f8f9f9;}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {#Clearall  {font-size: 11px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {#Clearall  {font-size: 12px;}}
+.overlayANALYTICS {position: absolute; width: 410px; height: 90px; right: 10px; overflow: hidden; top: 95px; border-radius: 0px 0px 7px 7px;} 
+.Numbers {position: absolute; width: 320px; height: 104px; right: 0px; top: 20px; font-weight: 900; font-size: 24px; color: #132736; text-align: right; border-top: 1px solid #B0B8BF; }
+#Numbers p {position: absolute; top: 15px; left: 80px; text-align: left}
+#Numbers p2 {position: absolute; top: 15px; left: 230px; text-align: left}
+#Numbers p3 {position: absolute; top: 15px; left: 0px; text-align: left} 
+.Numbers1 {position: absolute; width: 320px; height: 104px; right: 0px; top: 20px; font-weight: 900; font-size: 24px; color: #132736; text-align: right; border-top: 1px solid #B0B8BF; }
+#Numbers1 p {position: absolute; top: 15px; left: 80px;  text-align: left}
+#Numbers1 p2 {position: absolute; top: 15px; left: 230px; text-align: left}
+#Numbers1 p3 {position: absolute; top: 15px; left: 0px; text-align: left} 
+#OverlayGlob {position: absolute; top: 55px; border-top: 1px solid #B0B8BF; height: 40px; right: 10px;  width: 410px; z-index: 3;}
+#Glob {position: absolute; border: 1px solid #132736; border-radius: 5px; top: 8px; font-weight: 900; font-size: 10px; color: #fff; line-height: 18px; height: 20px; text-align: center; width: 75px; background: #132736; }
+#Region {position: absolute; border: 1px solid #132736; border-radius: 5px; top: 39px; font-weight: 900; font-size: 10px; color: #fff; text-align: center; line-height: 18px; height: 20px; width: 75px; background: #132736; }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)  {#Glob  {font-size: 8px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {#Glob  {font-size: 8px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)  {#Region  {font-size: 8px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {#Region  {font-size: 8px;}}
+#Total {position: absolute; line-height: 10px; font-size: 10px; left: 90px; font-weight: 500; text-align: left; color: #132736; top: 14px;}  
+#TotalDIS {position: absolute; font-size: 10px; top: 5px; left: 90px; font-weight: 500; text-align: left; line-height: 10px; color: #132736;}  
+#Comp1 {position: absolute; font-size: 9px; top: 63px; left: 90px; font-weight: 700; text-align: center; line-height: 12px; height: 12px; color: #91989f; padding-left: 0px; padding-right: 5px;  border-radius: 3px; }  
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)  {#Total  {font-size: 10px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {#Total  {font-size: 10px;}}
+#AVGValue {position: absolute; font-size: 10px; line-height: 10px; left: 170px; font-weight: 500; text-align: left; color: #132736; top: 14px;  } 
+#AVGValueDIS {position: absolute; font-size: 10px; top: 5px; left: 170px; font-weight: 500; text-align: left; line-height: 10px; color: #132736;} 
+#Comp2 {position: absolute; font-size: 9px; top: 63px;; left: 170px; font-weight: 700; text-align: center; line-height: 12px; height: 12px; color: #91989f; padding-left: 0px; padding-right: 5px; border-radius: 3px;} 
+@media only screen and (max-width: 768px) {#AVGValue  {font-size: 9px;}}
+@media only screen and (max-width: 768px)  {#AVGValueDIS  {font-size: 9px;}}
+#AVGYield {position: absolute; line-height: 10px; font-size: 10px; left: 320px; font-weight: 500; text-align: left; color: #132736; top: 14px;  }  
+#AVGYieldDIS {position: absolute; font-size: 10px; top: 5px; left: 320px; font-weight: 500; text-align: left; line-height: 10px; color: #132736;} 
+#Comp3 {position: absolute; font-size: 9px; top: 63px; left: 320px; font-weight: 700; text-align: center; line-height: 12px; height: 12px; color: #91989f; padding-left: 0px; padding-right: 5px;  border-radius: 3px; }
+@media only screen and (max-width: 768px) {#AVGYield  {font-size: 9px;}}
+@media only screen and (max-width: 768px)  {#AVGYieldDIS  {font-size: 9px;}}
+bold1 {font-weight: 900; color: #132736; }
+red {color: #cd4056; font-weight: 900;}
+green { color: #1d8100;  font-weight: 900;}
+black {color: #132736; font-weight: 900;}
+black3 {color: #697076; font-weight: 900;}
+red1 {position: absolute; color: #cd4056; font-weight: 900;}
+green1 {position: absolute; color: #1d8100; left: 45px; font-weight: 900;}
+black2 {position: absolute; color: #132736; left: 45px; font-weight: 900;}
+black1 {position: absolute; color: #324d63; font-weight: 900;}
+
+#Tag1 {display:none}
+#Tag2 {display:none}
+#Tag3 {display:none} 
+#Tag4 {display:none}
+#Tag5 {display:none}
+#Tag6 {display:none}
+#Tag7 {display:none}
+#Tag8 {display:none}
+#Tag9 {display:none}
+.overlaySWITCH {position: absolute; background: #fff; width: 140px; height: 130px; left: 10px; bottom: 50px; border-radius: 5px; border: 1px solid #fff; font-size: 10px; font-weight: 400; color: #132736} 
+#HIGHLIGHTS {position: absolute; left: 0px;  height: 30px; line-height: 30px; font-size: 12px; font-weight: 900; text-align: right; color: #555c62; padding-right: 15px; width: 135px;}  
+.switch::after {height: 6px; width: 6px; width: calc(50% - 2px); display: block; margin: auto; border: 1px solid #fff}
+.radio, .switch {position: absolute; height: 12px; width: 20px; background: #697076; color: #fff; border-color: #697076}
+input:checked+.switch--yellow::after, input:checked+.switch--yellow {background: #132736; border-color: #132736}
+input:checked+.switch--green::after, input:checked+.switch--green {background: #132736; border-color: #132736}
+input:checked+.switch--blue::after, input:checked+.switch--blue {background: #132736; border-color: #132736}
+input:checked+.switch--red::after, input:checked+.switch--red {background: #132736; border-color: #132736}
+input:checked+.switch::after {background: #fff; width: 6px; height: 6px; display: block; border: 1px solid #fff; width: calc(50% - 2px); margin-left: -1px}
+.Layout {position: absolute; top: 40px; left: 10px; line-height: 12px; text-align: left; width: 90px;}
+.Operation {position: absolute; top: 62px; left: 10px; line-height: 12px; text-align: left; width: 90px;}
+.Strategy {position: absolute; top: 84px; left: 10px; line-height: 12px; text-align: left; width: 90px;}
+.Title {position: absolute; top: 106px; left: 10px; line-height: 12px; text-align: left; width: 90px;}
+#overlayINFOBOX {position: relative; background: #DADFE3; width: 410px; height: 412px; top: 37px; left: 0px; overflow: hidden; border-radius: 0 0 7px 7px; transition: 	height 0.25s; transition-timing-function: ease-out; z-index: 2; }
+#Factor1 {position: absolute; background: rgba(		255, 255, 255, 0.7); font-size: 12px; top: 15px; right: 20px; font-weight: 900; text-align: right; color: #132736; border-radius: 50px; z-index: 3; line-height: 20px; height: 20px; padding-left: 15px; padding-right: 15px}   
+#shade {position: relative; left: 0px; top: 0px; width: 410px; height: 88px; display: block; background: rgba(		19, 39, 54, 0.4); z-index: 2; border-radius: 0px; border-bottom: 1px solid #B0B8BF}   
+#IMG {position: absolute; top: 0px; left: 0px; height: 88px; width: 410px; display: flex; align-items: center; overflow: hidden; justify-content: center;}
+#IMG img {overflow: hidden; z-index: 1; width: 100%;}
+#info1 p1 {position: absolute; left: 15px; top: 103px; color: #132736; font-weight: 900; font-size: 24px; z-index:2}
+#info1 p2 {position: absolute; left: 0px; top: 88px; padding-left: 15px; padding-top: 42px; width: 410px; height: 77px; color: #132736; font-weight: 500; font-size: 16px; border-bottom: 1px solid #B0B8BF; background: #B0B8BF}   
+#info1 p3 {position: absolute; left: 245px; top: 200px; color: #132736; font-weight: 900; font-size: 22px}    
+#info1 p4 {position: absolute; left: 245px; top: 310px; color: #132736; font-weight: 900; font-size: 22px} 
+#info1 p5 {position: absolute; left: 245px; top: 255px; color: #132736; font-weight: 900; font-size: 22px}  
+#Refer {position: absolute; z-index: 3; left: 15px; top: 370px; width: 70px; height: 18px; color: #132736; background: #fff; display: none; border-radius: 50px; font-weight: 900; font-size: 10px; text-align: center; line-height: 18px;}
+#Value {position: absolute; left: 245px; top: 175px; color: #697076; font-weight: 900; font-size: 12px;}
+#Yield {position: absolute; left: 245px; top: 285px; color: #697076; font-weight: 900; font-size: 12px}  
+#Size {position: absolute; left: 245px; top: 230px; color: #697076; font-weight: 900; font-size: 12px}    
+#Layout {position: absolute; left: 15px; top: 224px; line-height: 30px; height: 30px; color: #697076; font-weight: 500; font-size: 12px}  
+#Layoutdet {position: absolute; left: 95px; top: 224px; line-height: 30px; height: 30px; color: #132736; font-weight: 900; font-size: 12px}
+#Operation {position: absolute; left: 15px; top: 254px; line-height: 30px; height: 30px; color: #697076; font-weight: 500; font-size: 12px}  
+#Operationdet {position: absolute; left: 95px; top: 254px; line-height: 30px; height: 30px; color: #132736; font-weight: 900; font-size: 12px}    
+#Strategy {position: absolute; left: 15px; top: 284px; line-height: 30px; height: 30px; color: #697076; font-weight: 500; font-size: 12px}
+#Strategydet {position: absolute; left: 95px; top: 284px; line-height: 30px; height: 30px; color: #132736; font-weight: 900; font-size: 12px}  
+#Title {position: absolute; left: 15px; top: 314px; line-height: 30px; height: 30px; color: #697076; font-weight: 500; font-size: 12px}   
+#Titledet {position: absolute; left: 95px; top: 314px; line-height: 30px; height: 30px; color: #132736; font-weight: 900;font-size: 12px}     
+.overlay5 {position: absolute; right: 40px; height: 25px; top: 100px; width: 120px; display: inline; z-index: 2}   
+.Ons {height: 100%; cursor: pointer; z-index: 3}  
+.Ons .item {display: block; line-height: 30px; text-align: right; width: 120px; font-weight: 900; font-size: 10px;}  
+.Ons .item .on {display: block; width: 120px}   
+.overlay6 {position: absolute; right: 40px; height: 30px; top: 127px; width: 120px; display: inline; z-index: 2}     
+.Maps {height: 20px; cursor: pointer; z-index: 3}  
+.Maps .item {display: block; line-height: 30px; text-align: right; width: 120px; font-weight: 900; font-size: 10px}  
+.Maps .item .map {display: block; width: 120px} 
+.overlay7 {position: absolute; left: 40px; height: 26px; top: 182px; width: 150px; display: inline; z-index: 2}     
+.Contacts {height: 26px; cursor: pointer; z-index: 3}  
+.Contacts .item {display: block; line-height: 26px; height: 26px; text-align: center; width: 150px; font-weight: 700; font-size: 12px; border-radius: 5px;}  
+.Contacts .item .Contact {display: block; width: 150px} 
+#mapINFOBOX {position: absolute; top: 127px; right: 15px} 
+#bookmarkINFOBOX {position: absolute; top: 102px; right: 15px} 
+#Note{position: absolute; top: 354px; left: 15px; height: 18px; color: #1c3f91; border-radius: 50px; width: 80px; font-weight: 900; font-size: 10px; text-align: center; line-height: 18px; border: 1px solid #1c3f91;} 
+#overlayBOOKMARKS::-webkit-scrollbar {width: 0px; display: none} 
+#overlayBOOKMARKS::-moz-scrollbar {width: 0px; display: none}
+#overlayBOOKMARKS::-ms-scrollbar {width: 0px; display: none}
+#overlayBOOKMARKS::scrollbar {width: 0px; display: none}
+#overlayTABLE::-webkit-scrollbar {width: 0px; display: none} 
+#overlayTABLE::-moz-scrollbar {width: 0px; display: none}
+#overlayTABLE::-ms-scrollbar {width: 0px; display: none}
+#overlayTABLE::scrollbar {width: 0px; display: none}
+#overlayTABLE1s::-webkit-scrollbar {width: 0px; display: none} 
+#overlayTABLE1s::-moz-scrollbar {width: 0px; display: none}
+#overlayTABLE1s::-ms-scrollbar {width: 0px; display: none}
+#overlayTABLE1s::scrollbar {width: 0px; display: none}
+#overlayTABLE2s::-webkit-scrollbar {width: 0px; display: none} 
+#overlayTABLE2s::-moz-scrollbar {width: 0px; display: none}
+#overlayTABLE2s::-ms-scrollbar {width: 0px; display: none}
+#overlayTABLE2s::scrollbar {width: 0px; display: none}  
+.active det1{opacity: 1;}
+.active det2{opacity: 1;}
+.listings .item.active {background: #fff; 	 border: 1px solid #255DC4; height: 408px; cursor: default; margin-bottom: 10px } 
+.listings .item.active .Main1 {margin-top: 78px;}  
+.listings .item.active .Main3 {margin-top: 96px;}  
+.listings .item.active .Mark {top: 96px;}  
+.listings .item.active .Main4 {margin-top: 78px;} 
+.listings .item.active .Main5 {margin-top: 70px;} 
+.listings .item.active .Text6 {opacity: 1; margin-top: 156px;} 
+.listings .item.active .Text14 {margin-top: 136px;} 
+.listings .item.active .Text30 {margin-top: 108px;}
+.listings .item.active .Text31 {margin-top: 108px;}
+.listings .item.active .Text32 {margin-top: 108px;}
+.listings .item.active .Text33 {margin-top: 108px;}
+.listings .item.active .Text37 {width: 378px; cursor: default; }
+.listings .item.active .Text38 {width: 378px; }
+.listings .item.active .Text39 {margin-top: 145px; opacity: 1;} 
+.listings .item.active .Text40 {opacity: 1;}
+.listings .item.active .Size {opacity: 1; margin-top: 0px;}
+.listings .item.active .Yield {opacity: 1; margin-top: 0px;}
+.listings .item.active .Promoter {opacity: 1; margin-top: 0px;}
+.listings .item.active .itemOn {opacity: 1;}
+.listings .item.active .itemMap {opacity: 1; }
+.listings .item.active .itemContact {opacity: 1; }
+.listings .item.active .Layout {opacity: 1;}
+.listings .item.active .Operation {opacity: 1;}
+.listings .item.active .Strategy {opacity: 1;}
+.listings .item.active .Term {opacity: 1;}
+.listings .item.active .PRCOMP {opacity: 1;}
+.listings .item.active .YICOMP {opacity: 1;}
+.listings .item.activeX {background: #fff;  border: 1px solid #255DC4;  transition: background 0.5s, border 0.5s; transition-timing-function: ease-out }    
+.listings .item.activeX .Text34 {margin-left: 0px; width: 410px; opacity: 1;}  
+.listings .item.activeX .Text36 {left: 0px; width: 410px;}
+#overlayBACK {display: none;} 
+#DIRECTORY {display: none;} 
+#overlayCLEAR {position: absolute; top: 23px; font-size: 12px; font-weight: 900; width: 120px; text-align: right; right: 160px; cursor: pointer; z-index: 6; line-height: 24px; height: 24px;  transition-duration: 0.5s; transition-timing-function: ease-out; color: #DADFE3;} 
+#FORMALL {position: absolute; width: 410px; background: #f8f9f9; height: 50px; right: 10px; top: 660px; border-top: 1px solid #B0B8BF; border-bottom: 0px solid #B0B8BF; z-index: 6;}
+#FORM {position: absolute; top: 20px; right: 16px; font-size: 12px; font-weight: 900; text-align: center; cursor: pointer; z-index: 6; line-height: 30px; height: 30px; width: 120px; border-radius: 5px;  transition-duration: 0.5s; transition-timing-function: ease-out; background: #DADFE3; color: #fff;} 
+#FORM:hover {background: #213ea5; transition-duration: 0.5s; transition-timing-function: ease-out}     
+#overlayLISTS {width: 410px; height: 40px; position: absolute; z-index: 6; right: 10px; top: 190px; border-radius: 0px; border-bottom: 0px solid #c2cad1; border-top: 1px solid #f8f9f9; -webkit-box-shadow: 0 10px 6px -6px #697076; -moz-box-shadow: 0 10px 6px -6px #697076; box-shadow: 0 10px 6px -6px #697076;}  
+#toggle1 { position: absolute;width: 260px; line-height: 20px; z-index: 6; top: 8px; }
+#toggle1 input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none}
+#toggle1>* {cursor: pointer; text-align: center; display: inline-block; width: 70px; font-size: 10px; font-weight: 900; color: #91989f }
+.line {position: absolute; left: 0px; top: 26px; width: 70px; height: 5px; background-color: #132736; transition: 	all 0.1s; transition-timing-function: ease-out; z-index: 6;}
+#toggle1 input:checked+label {color: #132736; transition: 	color 0.25s; transition-timing-function: ease-out;}
+#toggle1 input[class=BYPRICE]:checked+label ~ .line {opacity:1; transition: 	all 0.1s; transition-timing-function: ease-out}
+#toggle1 input[class=BYLOCATION]:checked+label ~ .line {opacity:1; transform: translate(70px); transition: 	all 0.1s; transition-timing-function: ease-out;}
+#toggle1 input[class=BYTYPE]:checked+label  ~ .line {opacity:1; transform: translate(140px); transition: 	all 0.1s; transition-timing-function: ease-out;}
+#toggle1 input[class=NP]:checked+label  ~ .line {opacity:1; transform: translate(300px); transition: 	all 0.1s; transition-timing-function: ease-out; width: 110px;}
+#LINES5 {display: none}
+#overlayTAB {position: absolute; text-align: right; top: 6px; right: 0px; width: 120px; }  
+#toggle2 {position: absolute; right: 0px; width: 120px; display: block; z-index: 6;}
+#toggle2 input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none}
+#toggle2 input[class=BOOKMARKS]:checked+label {color: #132736; transition: 	color 0.25s; transition-timing-function: ease-out; }
+#toggle2 input:hover+label {color: #91989f}
+#toggle2 input[class=BOOKMARKS]+label {color: #91989f; font-size: 10px; font-weight: 900; line-height: 20px; padding-bottom: 9px; padding-left: 8px; padding-right: 12px;} 
+#toggle2 input[class=LISTING]+label {color: #697076; display: none; font-size: 0px; line-height: 0px} 
+#toggle2>* {cursor: pointer;}  
+.active1 det1{opacity: 1;}
+.active1 det2{opacity: 1;}
+.tables .item.active1 {background: #fff; border: 1px solid #255DC4; 	height: 408px; cursor: default; margin-bottom: 10px } 
+.tables .item.active1 .Text {margin-top: 78px;}  
+.tables .item.active1 .Text1 {margin-top: 96px;} 
+.tables .item.active1 .Mark {top: 96px;}  
+.tables .item.active1 .Text2 {margin-top: 78px;} 
+.tables .item.active1 .Text3 {margin-top: 70px;}
+.tables .item.active1 .Text6 {opacity: 1; margin-top: 156px;} 
+.tables .item.active1 .Text11 {margin-top: 136px;} 
+.tables .item.active1 .Text30 {margin-top: 108px;}
+.tables .item.active1 .Text31 {margin-top: 108px;}
+.tables .item.active1 .Text32 {margin-top: 108px;}
+.tables .item.active1 .Text33 {margin-top: 108px;}
+.tables .item.active1 .Text37 {width: 378px; cursor: default; }
+.tables .item.active1 .Text38 {width: 378px; }
+.tables .item.active1 .Text39 {margin-top: 145px; opacity: 1;} 
+.tables .item.active1 .Text40 {opacity: 1;}
+.tables .item.active1 .Size {opacity: 1; margin-top: 0px;}
+.tables .item.active1 .Yield {opacity: 1; margin-top: 0px;}
+.tables .item.active1 .Promoter {opacity: 1; margin-top: 0px;}
+.tables .item.active1 .itemOn {opacity: 1;}
+.tables .item.active1 .itemMap {opacity: 1; }
+.tables .item.active1 .itemContact {opacity: 1; }
+.tables .item.active1 .Layout {opacity: 1;}
+.tables .item.active1 .Operation {opacity: 1;}
+.tables .item.active1 .Strategy {opacity: 1;}
+.tables .item.active1 .Term {opacity: 1;}
+.tables .item.active1 .PRCOMP {opacity: 1;}
+.tables .item.active1 .YICOMP {opacity: 1;}
+.tables .item.active1X {background: #fff; border: 1px solid #255DC4;  transition: background 0.5s, border 0.5s; transition-timing-function: ease-out}    
+.tables .item.active1X .Text34 {margin-left: 0px; width: 410px; opacity: 1;}  
+.tables .item.active1X .Text36 {left: 0px; width: 410px;}
+.active2 det1{opacity: 1;}
+.active2 det2{opacity: 1;}
+.table1s .item.active2 {background: #fff; border: 1px solid #255DC4;	height: 408px; cursor: default;margin-bottom: 10px  } 
+.table1s .item.active2 .Text {margin-top: 78px;}  
+.table1s .item.active2 .Text1 {margin-top: 96px;}  
+.table1s .item.active2 .Mark {top: 96px;}  
+.table1s .item.active2 .Text2 {margin-top: 78px;} 
+.table1s .item.active2 .Text4 {margin-top: 70px;}
+.table1s .item.active2 .Text6 {opacity: 1; margin-top: 156px;} 
+.table1s .item.active2 .Text12 {margin-top: 136px;} 
+.table1s .item.active2 .Text30 {margin-top: 108px;}
+.table1s .item.active2 .Text31 {margin-top: 108px;}
+.table1s .item.active2 .Text32 {margin-top: 108px;}
+.table1s .item.active2 .Text33 {margin-top: 108px;}
+.table1s .item.active2 .Text37 {width: 378px;  cursor: default; }
+.table1s .item.active2 .Text38 {width: 378px; }
+.table1s .item.active2 .Text39 {margin-top: 145px; opacity: 1;} 
+.table1s .item.active2 .Text40 {opacity: 1;}
+.table1s .item.active2 .Size {opacity: 1; margin-top: 0px;}
+.table1s .item.active2 .Yield {opacity: 1; margin-top: 0px;}
+.table1s .item.active2 .Promoter {opacity: 1; margin-top: 0px;}
+.table1s .item.active2 .itemOn {opacity: 1;}
+.table1s .item.active2 .itemMap {opacity: 1; }
+.table1s .item.active2 .itemContact {opacity: 1; }
+.table1s .item.active2 .Layout {opacity: 1;}
+.table1s .item.active2 .Operation {opacity: 1;}
+.table1s .item.active2 .Strategy {opacity: 1;}
+.table1s .item.active2 .Term {opacity: 1;}
+.table1s .item.active2 .PRCOMP {opacity: 1;}
+.table1s .item.active2 .YICOMP {opacity: 1;}
+.table1s .item.active2X {background: #fff; border: 1px solid #255DC4;  transition: background 0.5s, border 0.5s; transition-timing-function: ease-out}    
+.table1s .item.active2X .Text34 {margin-left: 0px; width: 410px; opacity: 1;}  
+.table1s .item.active2X .Text36 {left: 0px; width: 410px;}
+#overlayTABLE, #overlayTABLE1s, #overlayTABLE2s, #overlayBOOKMARKS  { position: absolute;width: 410px; height: 420px; left: 0px; top: 10px; opacity: 1; overflow-y: scroll; border-radius: 0px; background: #f8f9f9; scrollbar-width: none; z-index: 5;}
+.tables .item, .table1s .item, .table2s .item, .listings .item  {position: relative; display: block; background: rgba(255, 255, 255, 1); border-radius: 5px; text-decoration: none; height: 72px; line-height: 0px; font-size: 0px; cursor: default; width: 410px; overflow-y: hidden; overflow-x: hidden; margin-bottom: 3px; border: 1px solid #c2cad1; transition: background 0.5s, border 0.5s; transition-timing-function: ease-out; }  
+.Text, .Main1 {position: absolute; font-weight: 900; font-size: 16px; color: #132736; left: 132px; border-radius: 0px; text-align: left; margin-top: 20px;  }     
+.Text1, .Main3 {position: absolute; font-weight: 500; font-size: 12px; color: #91989f; border-radius: 5px; text-align: left; left: 132px; margin-top: 37px; }  
+.Text2, .Main4 {position: absolute; font-weight: 900; font-size: 16px; color: #132736; text-align: right; right: 16px; margin-top: 20px; }  
+.Text3, .Text4, .Text5, .Main5 {position: absolute; margin-top: 11px; width: 16px; left: 107px; } 
+.Mark {position: absolute; font-size: 9px; left: 100px; text-align: left; top: 37px; font-weight: 900; color: #7721bc; z-index: 7;}
+.Text6 {position: absolute; font-weight: 900; font-size: 9px; color: #406079; left: 132px; opacity: 0; margin-top: 72px; pointer-events: none; background: #fff; line-height: 16px; height: 18px; padding-right: 10px; padding-left: 10px; text-align: center; border-radius: 50px; border: 1px solid #406079;}      
+.Text11, .Text12, .Text13, .Text14 {position: absolute; margin-top: 58px; font-weight: 700; font-size: 9px; color: #132736; left: 132px; width: 262px; }       
+.Text30, .Text31, .Text32, .Text33 {position: absolute; font-weight: 700; font-size: 9px; line-height: 16px; border-radius: 50px; padding-right: 10px; padding-left: 10px; text-align: center; color: #fff; margin-top: 32px; right: 16px; } 
+.Text34 {position: absolute; opacity: 0; border-top: 0px solid #B0B8BF; margin-left: 132px; margin-top: 72px; width: 278px;} 
+.Text36 {position: absolute; opacity: 0; border-top: 0px solid #B0B8BF; left: 132px; margin-top: 0px; width: 278px; }  
+.Text37 {position: absolute; margin-top: 13px; border-radius: 3px; margin-left: 16px; height: 46px; width: 61px; background: rgba(		19, 39, 54, 0); z-index: 6; cursor: pointer; }
+.Text38 {position: absolute; margin-top: 13px; border-radius: 3px; margin-left: 16px; height: 46px; width: 61px; display: flex; align-items: center; overflow: hidden; justify-content: center; filter: saturate(100%) contrast(100%); opacity: 1;}
+.Text39 {position: relative; opacity: 0; margin-top: 77px; margin-left: 132px; line-height: 1.3; width: 262px; font-weight: 400; font-size: 10px; padding-top: 35px; color: #132736; border-top: 1px solid #B0B8BF; height: 72px; }
+.itemMap { position: relative; font-weight: 900; height: 22px; line-height: 22px; font-size: 0px; top: -110px; width: 0px; left: 16px; vertical-align: top; text-align: left; cursor: pointer;opacity: 0;} 
+.itemOn { position: relative; font-weight: 900; height: 22px; line-height: 22px; font-size: 0px;  width: 0px; top: -55px; left: 16px; vertical-align: top; text-align: left; cursor: pointer;opacity: 0;} 
+.Text40 { position: relative; top: 0px; font-weight: 900; height: 22px; line-height: 22px; font-size: 0px;  width: 0px; left: 16px; vertical-align: top; text-align: left; cursor: pointer;opacity: 0;} 
+.itemContact {position: relative; top: 87px; font-weight: 900; line-height: 22px; height: 24px; font-size: 10px; color: #fff; width: 90px; background: #255DC4; border-radius: 5px; left: 16px; vertical-align: top; text-align: center; cursor: pointer; transition-duration: 0.5s; transition-timing-function: ease-out; opacity: 0; border: 1px solid #255DC4;  }
+.itemContact:hover {background: #213ea5; transition-duration: 0.5s; transition-timing-function: ease-out } 
+.Yield {position: absolute; font-weight: 900; line-height: 18px; font-size: 14px; color: #132736; left: 132px; vertical-align: top; text-align: left; pointer-events: none; opacity: 0; } 
+.Size {position: absolute; font-weight: 900; line-height: 18px; font-size: 14px; color: #132736; left: 234px; vertical-align: top; text-align: left; pointer-events: none; opacity: 0;} 
+.Promoter {position: absolute; font-weight: 900; line-height: 18px; font-size: 14px; color: #132736; left: 322px; vertical-align: top; text-align: left; pointer-events: none; opacity: 0; } 
+det {font-weight: 900; color: #91989f; font-size: 10px;}
+det1 {position: absolute; font-weight: 500; width: 262px; color: #91989f; opacity: 0; font-size: 10px; text-align: left; }
+det2 {position: absolute; font-weight: 700; width: 262px; color: #132736; opacity: 0; font-size: 10px; text-align: right;}
+slim1 {position: absolute;  width: 262px;  text-align: left; }
+slim2 {position: absolute;  width: 262px;  text-align: right;}
+red {color: #cd4056; font-weight: 900;}
+green { color: #1d8100;  font-weight: 900;}
+.Layout {position: relative; opacity: 0; border-top: 1px solid #B0B8BF; top: -2px; left: 132px; width: 262px; padding-top: 5px; pointer-events: none;}
+.Operation {position: relative; opacity: 0; top: 16px; left: 132px; border-top: 1px solid #B0B8BF; width: 262px; padding-top: 5px; pointer-events: none; }
+.Strategy {position: relative; opacity: 0; border-top: 1px solid #B0B8BF; top: 34px; left: 132px; width: 262px; padding-top: 5px; pointer-events: none;}
+.Term {position: relative; opacity: 0; padding-top: 2px; border-top: 1px solid #B0B8BF; width: 262px; top: 52px; left: 132px; pointer-events: none;}
+.PRCOMP {position: relative; opacity: 0; font-size: 9px; pointer-events: none; right: 16px; text-align: right; top: -235px; font-weight: 700; color: #91989f;}
+.YICOMP {position: relative; opacity: 0; font-size: 9px; pointer-events: none; left: 132px; text-align: left; top: -45px; font-weight: 700; color: #91989f;}
+.active3 det1{opacity: 1;}
+.active3 det2{opacity: 1;}
+.table2s .item.active3 {background: #fff; border: 1px solid #255DC4; height: 410px; cursor: default; margin-bottom: 10px } 
+.table2s .item.active3 .Text {margin-top: 78px;}  
+.table2s .item.active3 .Text1 {margin-top: 96px;}  
+.table2s .item.active3 .Mark {top: 96px;}  
+.table2s .item.active3 .Text2 {margin-top: 78px;} 
+.table2s .item.active3 .Text5 {margin-top: 70px;} 
+.table2s .item.active3 .Text6 {opacity: 1; margin-top: 156px;} 
+.table2s .item.active3 .Text13 {margin-top: 136px;} 
+.table2s .item.active3 .Text30 {margin-top: 108px;}
+.table2s .item.active3 .Text31 {margin-top: 108px;}
+.table2s .item.active3 .Text32 {margin-top: 108px;}
+.table2s .item.active3 .Text33 {margin-top: 108px;}
+.table2s .item.active3 .Text37 {width: 378px; cursor: default;}
+.table2s .item.active3 .Text38 {width: 378px; opacity: 1;}
+.table2s .item.active3 .Text39 {margin-top: 145px; opacity: 1;} 
+.table2s .item.active3 .Text40 {opacity: 1;}
+.table2s .item.active3 .Size {opacity: 1;margin-top: 0px;}
+.table2s .item.active3 .Yield {opacity: 1; margin-top: 0px;}
+.table2s .item.active3 .Promoter {opacity: 1; margin-top: 0px;}
+.table2s .item.active3 .itemOn {opacity: 1;}
+.table2s .item.active3 .itemMap {opacity: 1; }
+.table2s .item.active3 .itemContact {opacity: 1; }
+.table2s .item.active3 .Layout {opacity: 1;}
+.table2s .item.active3 .Operation {opacity: 1;}
+.table2s .item.active3 .Strategy {opacity: 1;}
+.table2s .item.active3 .Term {opacity: 1;}
+.table2s .item.active3 .PRCOMP {opacity: 1;}
+.table2s .item.active3 .YICOMP {opacity: 1;}
+.table2s .item.active3X {background: #fff; border: 1px solid #255DC4; transition: background 0.5s, border 0.5s; transition-timing-function: ease-out}    
+.table2s .item.active3X .Text34 {margin-left: 0px; width: 410px; opacity: 1;}  
+.table2s .item.active3X .Text36 {left: 0px; width: 410px;}
+#LINES {position: absolute; width: 410px; background: #f8f9f9; height: 420px; right: 10px; top: 230px; overflow: hidden; border-radius: 0px; }
+#Bottom {position: absolute; width: 410px; height: 1px; right: 10px; top: 660px;  border-top: 1px solid #B0B8BF;  }
+#logo {position: absolute; left: 130px; top: 135px; }
+#MSG1 {position: absolute; background: #f8f9f9; width: 410px; height: 360px; left: 0px; top: 10px; overflow: hidden; opacity: 1; }
+#MSGBookmark {position: absolute; font-weight: 900; font-size: 14px; display: block; color: #132736; width: 410px; top: 140px; left: 20px; padding-left: 10px; vertical-align: middle; text-align: left}  
+#MSG2 {position: absolute; background: #f8f9f9; width: 410px; height:  360px; left: 0px; top: 10px; overflow: hidden; opacity: 1; transition: 	opacity 0.3s; transition-timing-function: ease-out;}
+#MSGna {position: absolute; font-weight: 900; font-size: 14px; display: block; color: #132736; width: 410px; top: 140px; left: 20px; padding-left: 10px; vertical-align: middle; text-align: left; transition: 	opacity 0.3s; transition-timing-function: ease-out;} 
+#add {position: absolute; left: 20px; padding-left: 10px; padding-right: 30px; top: 170px; color: #91989f; font-size: 12px; font-weight: 700; }    
+#zoom {position: absolute; cursor: pointer; left: 20px; padding-left: 10px; top: 170px; color: #255DC4; font-size: 12px; font-weight: 700; }   
+#clear {position: absolute; cursor: pointer; left: 20px; padding-left: 10px; top: 190px; color: #255DC4; font-size: 12px; font-weight: 700; } 
+#Legend1 {position: absolute; width: 400px; top: 34px; left: 150px; opacity: 1}   
+#toggle3 {position: absolute; width: 400px; top: 0px; left: 0px; }
+#toggle3 input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none}
+#toggle3 input:checked+label, #toggle3 .active {font-weight: 900; background: #fff;}     
+#toggle3>* {cursor: pointer; margin-right: 2px; font-size: 10px; font-weight: 500; color: #555c62; display: inline; border-left: 1px solid #555c62; border-bottom: 1px solid #555c62; border-top: 1px solid #555c62; padding-left: 0px; padding-top: 2px; padding-bottom: 2px; border-radius: 0px 5px 5px 0px; line-height: 18px; height: 18px; padding-right: 0px; text-align: center;}
+#toggle3 input[class="EMPTY1"]+label {display: none}
+#toggle3 input[class="close1"]+label {display: none}
+#Legend2 {position: absolute; width: 400px; top: 56px; left: 150px; opacity: 1}       
+#toggle4 {position: absolute; width: 400px; top: 0px; left: 0px;}
+#toggle4 input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none} 
+#toggle4 input:checked+label, #toggle4 .active {font-weight: 900; background: #fff;}     
+#toggle4>* {cursor: pointer; margin-right: 2px; font-size: 10px; font-weight: 500; display: inline; padding-left: 0px; padding-top: 2px; padding-bottom: 2px; border-radius: 0px 5px 5px 0px; line-height: 18px; height: 18px; padding-right: 0px; text-align: center; border-left: 1px solid #555c62; border-bottom: 1px solid #555c62; border-top: 1px solid #555c62; color: #555c62;}
+#toggle4 input[class="EMPTY2"]+label {display: none}
+#toggle4 input[class="close2"]+label {display: none}
+#Legend3 {position: absolute; width: 400px; top: 78px; left: 150px; opacity: 1}     
+#toggle5 {position: absolute; width: 400px; top: 0px; left: 0px;}
+#toggle5 input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none}
+#toggle5 input:checked+label, #toggle5 .active {font-weight: 900; background: #fff;}     
+#toggle5>* {cursor: pointer; margin-right: 2px; font-size: 10px; font-weight: 500; color: #555c62; display: inline; border-left: 1px solid #555c62; border-bottom: 1px solid #555c62; border-top: 1px solid #555c62; padding-left: 0px; padding-top: 2px; padding-bottom: 2px; border-radius: 0px 5px 5px 0px; line-height: 18px; height: 18px; padding-right: 0px; text-align: center;}
+#toggle5 input[class="EMPTY3"]+label {display: none}
+#toggle5 input[class="close3"]+label {display: none}
+#Legend4 {position: absolute; width: 400px; top: 100px; left: 150px; opacity: 1}       
+#toggle6 {position: absolute; width: 400px; top: 0px; left: 0px;}
+#toggle6 input[type="radio"] {display: none; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; appearance: none}
+#toggle6 input:checked+label, #toggle6 .active {font-weight: 900; background: #132736; color: #fff;}     
+#toggle6>* {cursor: pointer; margin-right: 2px; font-size: 10px; font-weight: 500; color: #555c62; display: inline; border-left: 1px solid #555c62; border-bottom: 1px solid #555c62; border-top: 1px solid #555c62; padding-left: 0px; padding-top: 2px; padding-bottom: 2px; border-radius: 0px 5px 5px 0px; line-height: 18px; height: 18px; padding-right: 0px; text-align: center;}
+#toggle6 input[class="EMPTY4"]+label {display: none}
+#toggle6 input[class="close4"]+label {display: none} 
+bold {font-weight: 900;}
+strong {font-weight: 900; padding-left: 5px; color: #402100; padding-right: 5px; background: #fff; border: 1px solid #555c62; border-radius: 0 5px 5px 0; line-height: 18px; height: 18px; padding-top: 2px; padding-bottom: 2px; vertical-align: inherit;}
+strong1 {font-weight: 900; padding-left: 5px; padding-right: 5px; padding-bottom: 2px; padding-top: 2px; background: #132736; border-radius: 3px; color: #fff;}
+#overlayCOVER {position: absolute; width: 100%; height: 710px; left: 0px; top: 0px; background: rgba(248, 249, 249, 0.9); z-index: 10; margin: 0px; transition: 	opacity 0.3s; transition-timing-function: ease-out;}
+#overlayFORM {position: absolute; border-radius: 5px; width: 880px; height: 570px; left: 50px; top: 60px; background: #f8f9f9; z-index: 9; border: 1px solid #B0B8BF; }
+#closeCOVER {position: absolute; cursor: pointer; right: 20px; top: 15px; font-size: 10px; font-weight: 500; color: #132736; }
+#overlayREQ2 {position: absolute; width: 200px; height: 130px; left: 650px; top: 125px; z-index: 10; background: #DADFE3; border: 0px solid #fff; border-radius: 5px; }
+#overlayREQ1 {position: absolute; border-bottom: 0px solid #697076; width: 200px; height: 355px; left: 650px; top: 125px; z-index: 10; overflow-y: scroll; scrollbar-width: none; }
+#overlayREQ1::-webkit-scrollbar {width: 0px; display: none} 
+#overlayREQ1::-moz-scrollbar {width: 0px; display: none}
+#overlayREQ1::-ms-scrollbar {width: 0px; display: none}
+#overlayREQ1::scrollbar {width: 0px; display: none}
+.requests .item {display: inline-block; background: #DADFE3; margin-bottom: 10px; border-radius: 5px; border: 0px solid #fff; width: 200px;  height: 130px; } 
+.requests .item .ReqREF {background: #fff; width: 60px; color: #a2854d; margin-left: 124px; margin-top: 12px; font-weight: 900; text-align: center; border-radius: 50px; font-size: 9px; font-weight: 900; line-height: 14px; height: 16px; border: 1px solid #a2854d;}
+.requests .item .ReqTYP {margin-left: 16px; top: 26px; font-size: 14px; font-weight: 900; color: #132736; text-align: left}
+.requests .item .ReqLOC {position: relative; margin-left: 16px; margin-top: -7px; font-size: 12px; font-weight: 900; color: #91989f; text-align: left; } 
+.requests .item .ReqLAY {position: relative; margin-left: 16px; margin-top: 3px; font-size: 10px; font-weight: 700; color: #91989f; text-align: left; width: 168px; border-top: 1px solid #B0B8BF;}
+.requests .item .ReqPRI {position: relative;margin-left: 16px; margin-top: -9px; font-size: 10px; font-weight: 700; color: #91989f; text-align: left; width: 168px;}
+.requests .item .ReqSIZ {position: relative; margin-left: 16px; margin-top: -9px; font-size: 10px; font-weight: 700; color: #91989f; text-align: left; width: 168px;}
+#overlayINPUT1 {position: absolute; left: 50px; top: 100px; width: 250px}
+#overlayINPUT1 label {padding-bottom: 12px; text-align: left; font-size: 12px; font-weight: 900; color: #406079}
+#overlayINPUT1 label1 {position: absolute; right: 0px; margin-top: 50px; text-align: right; font-size: 10px; font-weight: 500; color: #cd4056}
+#overlayINPUT1 input {width: 250px; overflow-x: scroll; height: 24px; border-radius: 5px; cursor: text; background: #fff; border: 1px solid #B0B8BF; outline: none; padding-left: 15px; padding-right: 15px;-webkit-appearance: none; text-align: left; font-size: 10px; font-weight: 400; line-height: 14px; color: #132736; margin-bottom: 18px}
+#overlayINPUT1 textarea {resize: none; overflow-y: scroll; min-width: 250px; max-width: 250px; width: 250px; height: 158px; line-height: 1.5; min-height: 158px; max-height: 158px; border-radius: 5px; -webkit-appearance: none; cursor: text; background: #fff; outline: none; padding-left: 15px; padding-top: 8px; padding-right: 15px; border: 1px solid #B0B8BF;text-align: left; font-size: 10px; font-weight: 400; color: #132736; margin-bottom: 20px; scrollbar-width: none; }
+#overlayINPUT1 textarea::-webkit-scrollbar {width: 0px; display: none} 
+#overlayINPUT1 textarea::-moz-scrollbar {width: 0px; display: none}
+#overlayINPUT1 textarea::-ms-scrollbar {width: 0px; display: none}
+#overlayINPUT1 textarea::scrollbar {width: 0px; display: none}
+#overlayINPUT2 {position: absolute; left: 330px; top: 100px; width: 250px}
+#overlayINPUT2 label {padding-bottom: 12px; text-align: left; font-size: 12px; font-weight: 900; color: #406079}
+#overlayINPUT2 label1 {position: absolute; right: 0px; margin-top: 50px; text-align: right; font-size: 10px; font-weight: 500; color: #cd4056}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+#overlayINPUT1 label1 {position: absolute; right: 0px; margin-top: 25px; text-align: right; font-size: 10px; font-weight: 500; color: #cd4056}
+}   
+#overlayINPUT1 label2 {position: absolute; right: 0px; margin-top: 25px; text-align: right; font-size: 10px; font-weight: 500; color: #cd4056}
+}     
+label3 {color: #406079; font-weight: 900; font-size: 12px;}
+#overlayINPUT2 input {width: 250px; overflow-x: scroll; height: 24px; border-radius: 5px; cursor: text; background: #fff; outline: none; padding-left: 15px; padding-right: 15px; -webkit-appearance: none; text-align: left; font-size: 10px; font-weight: 400; border: 1px solid #B0B8BF; line-height: 14px; color: #132736; margin-bottom: 18px}
+#FREF {position: absolute; background: #fff; width: 60px; color: #a2854d; right: 16px; top: 12px; font-weight: 900; text-align: center; border-radius: 50px; font-size: 9px; font-weight: 900; line-height: 14px; height: 16px; border: 1px solid #a2854d;}
+#FTYPE {position: absolute; left: 16px; top: 28px; font-size: 14px; font-weight: 900; color: #132736; text-align: left}
+#FLOCATION {position: absolute; left: 16px; top: 45px; font-size: 12px; font-weight: 900; color: #91989f; text-align: left; } 
+#FLAYOUT {position: absolute; left: 16px; top: 73px; font-size: 10px; font-weight: 700; color: #91989f; text-align: left; width: 168px; border-top: 1px solid #B0B8BF;} 
+#FSIZE {position: absolute; left: 16px; top: 88px; font-size: 10px; font-weight: 700; color: #91989f; text-align: left; width: 168px;} 
+#FPRICE {position: absolute;left: 16px; top: 103px; font-size: 10px; font-weight: 700; color: #91989f; text-align: left; width: 168px;}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)  {#FREF  {font-size: 7px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)  {#FTYPE  {font-size: 12px;}}
+#Headtitle {position: absolute; font-size: 22px; font-weight: 900; color: #132736; left: 50px; top: 30px}
+#Bodytitle {position: absolute; font-size: 14px; font-weight: 700; color: #91989f; left: 48px; top: 55px; width: 550px;}
+#Apply {position: absolute; border-bottom: 0px solid #B0B8BF; padding-bottom: 2px; font-size: 0px; width: 199px; font-weight: 900; color: #324d63; left: 650px; top: 101px;  z-index: 3;}
+#Apply2 {display: none}
+#Submit {position: absolute; cursor: pointer; font-size: 12px; outline: none; font-weight: 900; text-align: center; color: #fff; left: 330px; top: 324px; background: #255DC4; width: 120px; height: 30px; line-height: 30px; border-radius: 5px; -webkit-appearance: none; -moz-appearance: none; appearance: none; opactiy: 1; transition-duration: 0.5s; border: 1px solid #255DC4; transition-timing-function: ease-out}
+#Disclaimer1 {position: absolute; height: 115px; font-size: 10px; font-weight: 400; line-height: 14px; text-align: left; color: #697076; left: 332px; top: 420px; width: 250px; overflow-y: scroll; scrollbar-width: none; }
+#Submit:hover{background: #213ea5; border: 1px solid #213ea5; transition-duration: 0.5s; transition-timing-function: ease-out }
+#Disclaimer2 {position: absolute; font-size: 12px; text-align: left; left: 332px; top: 385px; width: 250px; border-bottom: 0px solid #B0B8BF; padding-bottom: 5px }
+#Disclaimer1::-webkit-scrollbar {width: 0px; display: none} 
+#Disclaimer1::-moz-scrollbar {width: 0px; display: none}
+#Disclaimer1::-ms-scrollbar {width: 0px; display: none}
+#Disclaimer1::scrollbar {width: 0px; display: none}
+#LINES9 {position: absolute; width: 1px; height: 444px; left: 620px; top:100px; border-left: 1px solid #B0B8BF; }
+strong2 {font-weight: 900; cursor: pointer; color: #697076;}
+star {color: #cd4056; font-weight: 900; font-size: 12px;}
+blu {color: #255DC4; font-weight: 700;}
+blu2 {position: absolute; left: 0px; font-weight: 900; color: #132736; text-align: right; width: 168px; }
+#logo2 {position: absolute; right: 25px; top: 510px;}
+#overlayTHANKS {position: absolute; text-align: left; font-size: 10px; font-weight: 500; left: 460px; top: 328px; transition-timing-function: ease-out; opacity: 0;}
+.checkbox-container, .radio-container, .switch-container {-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;display: -webkit-inline-box;display: -ms-inline-flexbox;display: inline-flex;}
+.checkbox--purple {border-color: #406079; background-color: #f8f9f9};
+input:checked+.checkbox--purple::after, input:checked+.checkbox--purple {background: #406079; border-color: #406079;}
+input:checked+.checkbox--purple {background: #406079; border-color: #406079;}
+.forminput{opacity: 0;position: absolute;top: 0;left: 0;height: 0;width: 0;z-index: -1;}
+#select-container {position: absolute; width: 140px; left: 560px; top: 8px; z-index: 6; }
+#selection:focus+#select-arrow{border-top-color: #132736}
+#selection+#select-arrow {border-top-color: #132736; right: 15px; top: 11px;}
+#selection {font-weight: 700; padding-left: 15px; padding-top: 1px; border-radius: 5px; font-size: 12px; color: #132736; line-height: 22px; height: 24px; background: #B0B8BF; box-shadow: inset 0 0 0 1px #B0B8BF;}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {#selection  {font-size: 11px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {#selection  {font-size: 12px;}}
+#select-container1 {position: absolute; width: 140px; left: 410px; top: 8px; z-index: 6; }
+#selection1:focus+#select-arrow1 {border-top-color: #132736}
+#selection1+#select-arrow1 {border-top-color: #132736; right: 15px; top: 11px;}
+#selection1 {font-weight: 700; padding-left: 15px; padding-top: 1px; border-radius: 5px; font-size: 12px; color: #132736; background: #B0B8BF;; line-height: 22px; height: 24px; box-shadow: inset 0 0 0 1px #B0B8BF;; }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {#selection1  {font-size: 11px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {#selection1  {font-size: 12px;}}
+#select-container2 {position: absolute; width: 150px; right: 10px; top: 8px; z-index: 6; }
+#selection2:focus+#select-arrow2 {border-top-color: #402100}
+#selection2+#select-arrow2 {border-top-color: #402100; right: 15px; top: 11px;}
+#selection2 {font-weight: 700; padding-left: 15px; padding-top: 1px; border-radius: 5px; font-size: 12px; color: #402100; line-height: 22px; height: 24px; background: #dbc9aa; box-shadow: inset 0 0 0 1px #dbc9aa;}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {#selection2  {font-size: 11px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {#selection2  {font-size: 12px;}}
+#select-container3 {position: absolute; width: 140px; left: 260px; top: 8px; z-index: 6; }
+#selection3:focus+#select-arrow3 {border-top-color: #132736}
+#selection3+#select-arrow3 {border-top-color: #132736; right: 15px; top: 11px;}
+#selection3 {font-weight: 700; padding-left: 15px; padding-top: 1px; border-radius: 5px; font-size: 12px; color: #132736; line-height: 22px; height: 24px; background: #B0B8BF;; box-shadow: inset 0 0 0 1px #B0B8BF;;}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {#selection3  {font-size: 11px;}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {#selection3  {font-size: 12px;}}
+#overlayREMOVE {display: none;}
+#overlayLoad {z-index: 9; position: absolute; left: 0px; top: 0px; width: 100%; height: 800px; background: rgba(248, 249, 249, 0.9); transition: opacity 1s;}  
+#Loading {position: absolute; left: 340px; top: 330px; width: 300px; height: 40px; transition: opacity 0.2s;  border-radius: 5px; transition: opacity 0.2s; text-align: center; border: 0px solid #B0B8BF;}  
+#tag {font-size: 16px; transition: opacity 0.5s; line-height: 40px; color: #132736; font-family: 'Days One', sans-serif;}  
+#browser {font-size: 14px; color: #cd4056; font-weight: 400;} 

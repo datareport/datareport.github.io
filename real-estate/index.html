@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html amp lang="en">
+<head>
+<meta charset="utf-8">
+    <link rel="icon" type="image/png" href="./img/oilmap.png" sizes="16x16">
+    <link rel="canonical" href="http://www.oilmap.xyz"/>
+    <link rel="alternative" hreflang="es" href="http://www.oilmap.xyz/es.html">
+    <link rel="alternative" hreflang="fr" href="http://www.oilmap.xyz/ar.html">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script src="./js/mapbox-gl.js"></script>
+    <link href="./js/mapbox-gl.css" rel="stylesheet">
+    <link href="./js/assembly.min.css" rel="stylesheet">
+    <script async="" defer="" src="./js/assembly.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <body class="prose">
+    <header class="bg-darken75 color-black h-auto-mm h6 ">
+    <div class="flex-parent flex-parent--space-between-main w-full">
+    <div class="flex-child ml240 mt24 mb12 color-yellow"><h3>REAL ESTATE DRAFT</h3></div>
+    <div class="about-header flex-child mr24 mt30 mb50 txt-bold" style="color: #F0B823; text-shadow: 1px 1px 2px rgb(8, 8, 8), 0 0 1em rgb(253, 253, 255);">
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+ </header>
+  
+<style>
+   body {
+            margin:0;
+            padding:0;
+        }
+        header {
+            position: relative;
+            display: block;
+            top: 0;
+            left: 0;
+            right: 0;
+            text-transform: uppercase;
+            z-index:1;
+        }
+        #legend {
+            position: absolute;
+            left: 24px;
+            bottom: 120px;
+            z-index: 1;
+        }
+        #map { position:absolute; top:0%; bottom:0%; width:100%; z-index:-1;}
+
+        .sidebar {
+        position: absolute;
+        width: 40%;
+        height: 100%;
+        top: 10%;
+        right: 0%;
+        left: 60%;
+        overflow: hidden;
+        border-right: 10px solid rgba(0, 0, 0, 0.25)}
+        .listings .item {
+  display: block;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  text-decoration: none;
+}
+
+#console {
+  position: absolute;
+  width: 240px;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: white;
+}
+.listings .item:last-child { border-bottom: none; }
+
+.listings .item .title {
+  display: block;
+  color: #00853e;
+  font-weight: 700;
+}
+
+.listings .item .title small { font-weight: 400; }
+
+.listings .item.active .title,
+.listings .item .title:hover { color: #8cc63f; }
+
+.listings .item.active {
+  background-color: #f8f8f8;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  border-left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00853e;
+  border-radius: 0;
+}
+
+.clearfix { display: block; }
+
+.clearfix::after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+        dl {
+            margin-left: 0;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        dt {
+            margin-left: 0;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .sidebar > div:first-child button {
+            border-radius:3px 3px 0 0;
+        }
+        .sidebar > div:last-child button {
+            border-radius:0 0 3px 3px;
+        }
+        /* Dark attribution */
+         .mapboxgl-ctrl.mapboxgl-ctrl-attrib a { color:#fff; }
+        /* modal styling */
+        .modal {
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            text-align: center;
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 40px;
+            border: 1px solid #888;
+            width: 40%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .leaflet-popup-content {
+            margin: 7px;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            h3 {
+              
+                font-size: 16px!important;
+                padding: 12px!important;
+                text-align: center;
+                overflow: hidden;
+                 width: 1px;
+                height: 1px;
+                
+            }
+            .modal-content{
+                width:100%;
+            }
+            body { margin:0; padding:0; }
+        }
+            
+         #menu {
+        background: #fff;
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        left: 10px;
+        width: 120px;
+        font-family: 'Open Sans', sans-serif;
+        border: 1px solid #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+        #menu a {
+            font-size: 13px;
+            color: #404040;
+            display: block;
+            margin: 0;
+            text-decoration: none;
+            border-bottom: 1px solid #404040;
+            text-align: center;
+        }
+        #menu a:last-child {
+            border: none;
+            background-color: #fad201 ;
+            color: #404040;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        #menu a:hover {
+            background-color: #fad201;
+            color:#404040;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        #menu a.active {
+            background-color: #3887be;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        #menu a.active:hover {
+            background: #3074a4;
+        }
+              /* Marker tweaks */
+ </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoicm9xdWVsZWFsMDgiLCJhIjoiY2ppZzl5NWo2MTVmMTNrcGU0enR0ZTU2MyJ9.4ZWYdzUlqvIQwwSIR50xZA';
+var map = new mapboxgl.Map({
+    container: 'map',
+        style: 'mapbox://styles/roqueleal08/ck9qfezy4466a1ipdv62ipfqu',
+        center: [138.86,36.45],
+        zoom: 4
+    });
+mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.0/mapbox-gl-rtl-text.js');
+map.addControl(new MapboxLanguage());
+
+
+ 
+</script>
+    <script>
+        // inicio REALESTATE
+        var url = 'https://raw.githubusercontent.com/roqueleal/geo/master/coord.geojson';
+        map.on('load', function () {
+        window.setInterval(function() {
+        map.getSource('REALESTATE').setData(url);
+        }, 2000);
+ 
+        map.addSource('REALESTATE', { type: 'geojson', data: url });
+        map.addLayer({
+            "id": "REALESTATE",
+            "type": "symbol",
+            "source": "REALESTATE",
+                "layout": {
+                "icon-image": "apartament",
+                "icon-size":[
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                0,
+                0,
+                9.256,
+                0.1
+                    ]
+                    }
+                    });
+                    });
+        // FIN REALESTATE
+        // inicio CLUSTERREALESTATE
+        
+        map.on('load', function() {
+// Add a new source from our GeoJSON data and set the
+// 'cluster' option to true. GL-JS will add the point_count property to your source data.
+        map.addSource("CLUSTER-REALESTATE", {
+        type: "geojson",
+// Point to GeoJSON data. This example visualizes all M1.0+ REALESTATE
+// from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
+        data: "https://raw.githubusercontent.com/roqueleal/geo/master/coord.geojson",
+        cluster: true,
+        clusterMaxZoom: 14, // Max zoom to cluster points on
+        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+        });
+ 
+        map.addLayer({
+        id: "CLUSTER-REALESTATE",
+        type: "circle",
+        source: "CLUSTER-REALESTATE",
+        filter: ["has", "point_count"],
+    paint: {
+
+"circle-color": [
+"step",
+["get", "point_count"],
+"#1dcaff",
+5,
+"#fff000",
+10,
+"#ff521d"
+],
+"circle-radius": [
+"step",
+["get", "point_count"],
+20,
+10,
+30,
+750,
+40
+]
+}
+});
+ 
+map.addLayer({
+id: "cluster-count",
+type: "symbol",
+source: "CLUSTER-REALESTATE",
+filter: ["has", "point_count"],
+layout: {
+"text-field": "{point_count_abbreviated}",
+"text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+"text-size": 12
+}
+});
+ 
+map.addLayer({
+id: "unclustered-point",
+type: "circle",
+source: "CLUSTER-REALESTATE",
+filter: ["!", ["has", "point_count"]],
+paint: {
+"circle-color": "#11b4da",
+"circle-radius": 0.1,
+"circle-stroke-width": 1,
+"circle-stroke-color": "#fff"
+}
+});
+ 
+// inspect a cluster on click
+map.on('click', 'clusters', function (e) {
+var features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
+var clusterId = features[0].properties.cluster_id;
+map.getSource('CLUSTER-REALESTATE').getClusterExpansionZoom(clusterId, function (err, zoom) {
+if (err)
+return;
+ 
+map.easeTo({
+center: features[0].geometry.coordinates,
+zoom: zoom
+});
+});
+});
+ 
+map.on('mouseenter', 'clusters', function () {
+map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseleave', 'clusters', function () {
+map.getCanvas().style.cursor = '';
+});
+});
+</script>
+
+
+    
+    </script>
+    
+
+<script>
+
+
+
+    // to grab checkbox value
+    $('input.js-checkboxes').prop('checked', true);
+    var nav = new mapboxgl.NavigationControl();
+    var nav2 = new mapboxgl.FullscreenControl();
+    var nav3 = new mapboxgl.GeolocateControl({ positionOptions: { enableHighAccuracy: true }, trackUserLocation: true });
+    var nav4 = new MapboxGeocoder ({ accessToken: mapboxgl.accessToken });
+    map.addControl(nav4, 'bottom-right');
+    map.addControl(nav, 'bottom-right');
+    map.addControl(nav2, 'bottom-right');
+    map.addControl(nav3, 'bottom-right');
+    function mapReset() {
+        if (window.innerWidth < 800) {
+            map.setZoom(4.17);
+        } else {
+            map.setZoom(4.17);
+        }
+    }
+
+    </script>
+        <script>
+        // popup
+        map.on('mousemove', function(event) {
+        if (map.loaded()) {
+            var features = map.queryRenderedFeatures(event.point, {
+                layers: ['BUILDING']
+            });
+            map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+        }
+    });
+    window.addEventListener('resize', () => {
+        mapReset();
+    })
+         // popup
+         // popup properties
+     map.on('click', 'BUILDING', function (e) {
+        new mapboxgl.Popup({
+    closeButton: true,
+    closeOnClick: true
+    })
+    .setLngLat(e.lngLat)
+    .setHTML('<dd>' + e.features[0].properties.Type + 
+    '<img src=" '+ e.features[0].properties.Photo + '" />' 
+    + e.features[0].properties.Value + '</dd>')
+    .addTo(map);
+    });
+
+         // popup properties
+</script>
+</body>
+</html>
